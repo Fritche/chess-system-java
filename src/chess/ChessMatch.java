@@ -71,6 +71,11 @@ public class ChessMatch {
 		return capturedPiece;
 	}
 	
+	private void undoMove(Position source, Position target, Piece capturedPiece ) {
+		Piece p = board.removePiece(target);
+		board.placePiece(p, source);
+	}
+	
 	private void validateSourcePosition(Position position) {
 		if(!board.threreIsAPiece(position)) {
 			throw new ChessException("There is no piece on source position");
